@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  deb1:
+    build: .
+    container_name: deb1
+    hostname: deb1
+    deploy:
+      resources:
+        limits:
+          memory: 8g
+
+  deb2:
+    build: .
+    container_name: deb2
+    hostname: deb2
+    deploy:
+      resources:
+        limits:
+          memory: 8g
+
+  deb3:
+    build: .
+    container_name: deb3
+    hostname: deb3
+    deploy:
+      resources:
+        limits:
+          memory: 8g
+
+  deb4:
+    build: .
+    container_name: deb4
+    hostname: deb4
+    deploy:
+      resources:
+        limits:
+          memory: 8g
+
+networks:
+  default:
+    driver: bridge
