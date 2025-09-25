@@ -8,6 +8,7 @@ services:
       - mpi_net
     volumes:
       - shared_data:/home/mpiuser/shared
+    command: ["/bin/bash", "-c", "/home/mpiuser/write_file.sh && sleep infinity"]
 
   node2:
     build: .
@@ -16,6 +17,7 @@ services:
       - mpi_net
     volumes:
       - shared_data:/home/mpiuser/shared
+    command: ["/bin/bash", "-c", "/home/mpiuser/write_file.sh && sleep infinity"]
 
   node3:
     build: .
@@ -24,6 +26,7 @@ services:
       - mpi_net
     volumes:
       - shared_data:/home/mpiuser/shared
+    command: ["/bin/bash", "-c", "/home/mpiuser/write_file.sh && sleep infinity"]
 
 networks:
   mpi_net:

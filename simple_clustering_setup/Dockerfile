@@ -17,6 +17,8 @@ RUN mkdir -p /home/mpiuser/.ssh && chown -R mpiuser:mpiuser /home/mpiuser/.ssh
 COPY ssh_config/id_rsa /home/mpiuser/.ssh/id_rsa
 COPY ssh_config/id_rsa.pub /home/mpiuser/.ssh/authorized_keys
 RUN chmod 600 /home/mpiuser/.ssh/id_rsa /home/mpiuser/.ssh/authorized_keys && chmod 700 /home/mpiuser/.ssh
+COPY mpi_program/write_file.sh /home/mpiuser/write_file.sh
+RUN chmod +x /home/mpiuser/write_file.sh
 
 # Create shared folder
 RUN mkdir -p /home/mpiuser/shared && chown -R mpiuser:mpiuser /home/mpiuser/shared
