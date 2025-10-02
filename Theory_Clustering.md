@@ -29,3 +29,28 @@
 Definition: Distributed file system 
 
 - User data is stored in distributed manner 
+- Users feel that the file is part of their local system, while he is unaware of the storage in the backend.
+- Application of such files are in big system and distributed in the nature of railway systems
+
+System-Architecture:
+- Islayered
+- System architecture is as shown in picture 
+![Alt text](image.png)
+- The infiband is a network used to connect nodes (Server Pool).
+- User can use the native language of GlusterFs or HTTP or FTP.
+
+
+Architecture-Components:
+- Server Storage Pool
+    - storage nodes which create a global namespace
+    - There is also a trusted server-pool. Nodes need to be invited in order to contribute in it.
+    - Members can be dynamically added/removed.
+- storage client
+    - any client able to connect with linux file system with any of NFS, CFS, HTTP, FTP
+- Fuse
+    - Makes it possible to implement a fully functional filesystem with a userspace program.
+    - Features include:
+        - API-Library
+        - Secure Implementation
+        - Stable over time
+    - 

@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  node1:
+    image: debian:latest
+    container_name: node1
+    command: tail -f /dev/null
+    volumes:
+      - node1_brick:/data/brick1
+    networks:
+      - gluster-net
+
+  node2:
+    image: debian:latest
+    container_name: node2
+    command: tail -f /dev/null
+    volumes:
+      - node2_brick:/data/brick1
+    networks:
+      - gluster-net
+
+  node3:
+    image: debian:latest
+    container_name: node3
+    command: tail -f /dev/null
+    volumes:
+      - node3_brick:/data/brick1
+    networks:
+      - gluster-net
+
+volumes:
+  node1_brick:
+  node2_brick:
+  node3_brick:
+
+networks:
+  gluster-net:
+    driver: bridge
