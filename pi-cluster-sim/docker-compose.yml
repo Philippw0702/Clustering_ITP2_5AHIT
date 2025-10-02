@@ -2,9 +2,9 @@ version: '3.8'
 
 services:
   node1:
-    image: gluster/gluster-centos
-    platform: linux/amd64
+    image: gluster-arm
     container_name: node1
+    privileged: true
     volumes:
       - node1-brick:/data/brick
     networks:
@@ -13,9 +13,9 @@ services:
     tty: true
 
   node2:
-    image: gluster/gluster-centos
-    platform: linux/amd64
+    image: gluster-arm
     container_name: node2
+    privileged: true
     volumes:
       - node2-brick:/data/brick
     networks:
@@ -24,9 +24,9 @@ services:
     tty: true
 
   node3:
-    image: gluster/gluster-centos
-    platform: linux/amd64
+    image: gluster-arm
     container_name: node3
+    privileged: true
     volumes:
       - node3-brick:/data/brick
     networks:
@@ -35,9 +35,9 @@ services:
     tty: true
 
   node4:
-    image: gluster/gluster-centos
-    platform: linux/amd64
+    image: gluster-arm
     container_name: node4
+    privileged: true
     volumes:
       - node4-brick:/data/brick
     networks:
@@ -47,9 +47,13 @@ services:
 
 volumes:
   node1-brick:
+    driver: local
   node2-brick:
+    driver: local
   node3-brick:
+    driver: local
   node4-brick:
+    driver: local
 
 networks:
   gluster-net:
