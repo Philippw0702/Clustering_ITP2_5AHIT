@@ -3,38 +3,46 @@ version: '3.8'
 services:
   node1:
     image: gluster/gluster-centos
+    platform: linux/amd64
     container_name: node1
-    networks:
-      - gluster-net
     volumes:
       - node1-brick:/data/brick
+    networks:
+      - gluster-net
+    command: ["/usr/sbin/glusterd", "-N"]
     tty: true
 
   node2:
     image: gluster/gluster-centos
+    platform: linux/amd64
     container_name: node2
-    networks:
-      - gluster-net
     volumes:
       - node2-brick:/data/brick
+    networks:
+      - gluster-net
+    command: ["/usr/sbin/glusterd", "-N"]
     tty: true
 
   node3:
     image: gluster/gluster-centos
+    platform: linux/amd64
     container_name: node3
-    networks:
-      - gluster-net
     volumes:
       - node3-brick:/data/brick
+    networks:
+      - gluster-net
+    command: ["/usr/sbin/glusterd", "-N"]
     tty: true
 
   node4:
     image: gluster/gluster-centos
+    platform: linux/amd64
     container_name: node4
-    networks:
-      - gluster-net
     volumes:
       - node4-brick:/data/brick
+    networks:
+      - gluster-net
+    command: ["/usr/sbin/glusterd", "-N"]
     tty: true
 
 volumes:
@@ -45,4 +53,4 @@ volumes:
 
 networks:
   gluster-net:
-    driver: overlay
+    driver: bridge
