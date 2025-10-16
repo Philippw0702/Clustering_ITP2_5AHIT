@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: glusterfs
+  namespace: glusterfs-cluster
+spec:
+  selector:
+    matchLabels:
+      app: glusterfs
+  template:
+    metadata:
+      labels:
+        app: glusterfs
+    spec:
+      hostNetwork: true
+      containers:
+      - name: glusterfs
+        image: your-dockerhub-username/gluster-arm:latest
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: brick-storage
+          mountPath: /data/brick
+        ports:
+        - containerPort: 24007
+        - containerPort: 24008
+        - containerPort: 49152
+      volumes:
+      - name: brick-storage
+        hostPath:
+          path: /data/brick

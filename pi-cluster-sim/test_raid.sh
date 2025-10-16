@@ -1,10 +1,7 @@
 #!/bin/bash
-# ===============================
-# GlusterFS RAID10 Test Script
-# Demonstrates striping and redundancy
-# ===============================
 
-set -e  # Exit on any error
+
+set -e  
 echo "=== GlusterFS RAID10 Test Script ==="
 
 # 1. Check cluster and volume
@@ -24,7 +21,7 @@ for i in $(seq 1 8); do
   docker exec node1 sh -c "echo 'File $i from node1' > /mnt/gv0/file$i.txt"
 done
 
-# 4. Verify files exist on all nodes (demonstrates replication)
+# 4. Verify files exist on all nodes
 echo "--- Verifying replicated files on all nodes ---"
 for node in node2 node3 node4; do
   echo "--- Contents on $node ---"

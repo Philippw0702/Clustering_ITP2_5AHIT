@@ -10,8 +10,7 @@ docker exec node1 gluster peer probe node4
 sleep 5
 docker exec node1 gluster peer status
 
-# 3. Create a RAID10-style volume:
-#    Two mirrored pairs (1+2) and (3+4)
+# 3. Create a RAID10 volume:
 echo "--- Creating RAID10-style volume gv0 ---"
 docker exec node1 gluster volume create gv0 replica 2 transport tcp \
   node1:/data/brick node2:/data/brick \

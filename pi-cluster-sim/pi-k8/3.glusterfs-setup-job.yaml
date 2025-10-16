@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: glusterfs-setup
+  namespace: glusterfs-cluster
+spec:
+  template:
+    spec:
+      containers:
+      - name: glusterfs-setup
+        image: julianstalman/gluster-arm:latest
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            gluster peer probe node2;
+            gluster peer probe node3;
+            gluster peer probe node4;
+            sleep 5;
+            gluster volume create gv0 replica 2 transport tcp \
+              node1:/data/brick node2:/data/brick \
+              node3:/data/brick node4:/data/brick force;
+            gluster volume start gv0;
+      restartPolicy: OnFailure
+      
