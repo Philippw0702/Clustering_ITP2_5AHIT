@@ -15,7 +15,8 @@ spec:
       hostNetwork: true
       containers:
       - name: glusterfs
-        image: your-dockerhub-username/gluster-arm:latest
+        image: julianstalman/gluster-arm:latest
+        imagePullPolicy: Never
         securityContext:
           privileged: true
         volumeMounts:

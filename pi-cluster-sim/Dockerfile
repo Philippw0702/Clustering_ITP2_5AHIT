@@ -10,11 +10,15 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Copy the setup script into the image
+COPY setup.sh /usr/local/bin/setup.sh
+RUN chmod +x /usr/local/bin/setup.sh
+
 # Create GlusterFS brick directory
 RUN mkdir -p /data/brick
 
 # Expose GlusterFS ports
 EXPOSE 24007 24008 49152-49156
 
-# Start GlusterFS daemon in non-daemonized mode
-CMD ["/usr/sbin/glusterd", "-N"]
+# Run the setup script during container startup
+CMD ["/bin/bash", "-c", "/usr/local/bin/setup.sh && /usr/sbin/glusterd -N"]

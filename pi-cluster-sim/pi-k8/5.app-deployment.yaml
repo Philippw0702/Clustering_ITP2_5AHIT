@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: your-application-image
+        image: julianstalman/gluster-arm:latest
         volumeMounts:
         - name: glusterfs-storage
           mountPath: /mnt/gv0
